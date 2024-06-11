@@ -1,13 +1,13 @@
-﻿using Catalog.API.Catalog.Categories.Repositories;
+﻿using Catalog.API.Data;
 using Catalog.API.Models;
 using FluentValidation;
 using System.Reflection.Metadata;
 
-namespace Catalog.API.Catalog.Categories.CreateCategory;
+namespace Catalog.API.Catalog.Categories.Commands.CreateCategory;
 
 public record CreateCategoryCommand(string CategoryName) : ICommand<CreateCatetoryResult>;
 
-public record CreateCatetoryResult(Guid id);
+public record CreateCatetoryResult(Category category);
 
 public class CreateCategoryValidator : AbstractValidator<CreateCategoryCommand>
 {
@@ -18,18 +18,19 @@ public class CreateCategoryValidator : AbstractValidator<CreateCategoryCommand>
 }
 public class CreateCategoryHandler : ICommandHandler<CreateCategoryCommand, CreateCatetoryResult>
 {
-    private readonly ICategoryRepository _repository;
-    public CreateCategoryHandler(ICategoryRepository repository)
+    private CategoryContext _context;
+    public CreateCategoryHandler(CategoryContext context)
     {
-        _repository = repository;
+        _context = context;
     }
     public async Task<CreateCatetoryResult> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
-        var category = new Category(request.CategoryName);
-        category.CategoryId = Guid.NewGuid();
+        var category = new Category(Guid.NewGuid(), request.CategoryName);
 
-        await _repository.AddAsync(category);
-        
-        throw new NotImplementedException();
+        await _context.Category.AddAsync(category);
+
+        await _context.SaveChangesAsync();
+
+        return new CreateCatetoryResult(category);
     }
 }
