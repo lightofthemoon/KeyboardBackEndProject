@@ -17,6 +17,15 @@ builder.Services.AddDbContext<CategoryContext>(option =>
 {
     option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddDbContext<BrandContext>(option =>
+{
+    option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+}, ServiceLifetime.Scoped);
+builder.Services.AddDbContext<ProductContext>(option =>
+{
+    option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+}, ServiceLifetime.Singleton
+    );
 
 var app = builder.Build();
 
@@ -25,6 +34,13 @@ app.MapControllers();
 app.MapCarter();
 app.UseRouting();
 app.MapGet("/", () => "Hello World!");
+
+//using (var scope = app.Services.CreateScope())
+//{
+//    var brandContext = scope.ServiceProvider.GetRequiredService<BrandContext>();
+//    BrandDbInnitializer.InitDb(app);
+//}
+
 
 app.Run();
 

@@ -27,6 +27,14 @@ namespace Catalog.API.Controllers
             return Ok(categories);
         }
 
+        [HttpGet("{Id}")]
+        public async Task<ActionResult<Category>> GetById(Guid Id)
+        {
+            var category = await _context.Category.FindAsync(Id);
+
+            return Ok(category);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Category>> CreateCategory(CreateCategoryDTO createCategoryDTO)
         {

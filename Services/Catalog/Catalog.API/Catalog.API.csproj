@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Catalog\Products\CreateProduct\" />
     <Folder Include="Exceptions\" />
   </ItemGroup>
 

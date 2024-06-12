@@ -4,7 +4,7 @@ using Catalog.API.Models;
 
 namespace Catalog.API.Catalog.Categories.Queries.GetCategoryById;
 
-public record GetCategoryByIdQuery(string Id) : IQuery<GetCategoryByIdResult>;
+public record GetCategoryByIdQuery(Guid Id) : IQuery<GetCategoryByIdResult>;
 
 public record GetCategoryByIdResult(Category Category);
 
