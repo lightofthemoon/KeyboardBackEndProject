@@ -4,7 +4,7 @@ using Catalog.API.Models;
 using Mapster;
 using MediatR;
 
-namespace Catalog.API.Catalog.Products.CreateProduct;
+namespace Catalog.API.Catalog.Products.Commands.CreateProduct;
 
 
 public record CreateProductRequest(CreateBrandDTO CreateProductDto);
@@ -15,7 +15,7 @@ public class CreateProductEndpoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/api/v1/cqrs/product", 
+        app.MapPost("/api/v1/cqrs/product",
             async (CreateProductRequest request, ISender sender) =>
             {
                 var command = request.Adapt<CreateProductCommand>();

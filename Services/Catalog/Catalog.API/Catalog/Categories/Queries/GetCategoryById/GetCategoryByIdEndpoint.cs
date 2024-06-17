@@ -1,5 +1,6 @@
 ﻿using BuildingBlocks.CQRS;
 using Carter;
+using Catalog.API.Catalog.Products.Commands.CreateProduct;
 using Catalog.API.Models;
 using Mapster;
 using MediatR;
@@ -22,6 +23,11 @@ public class GetCategoryByIdEndpoint : ICarterModule
                 //var response = result.Adapt<GetCategoryByIdResponse>();
 
                 return Results.Ok(result);
-            });
+            })
+            .WithName("GetCategoryById")
+            .Produces<GetCategoryByIdResponse>(StatusCodes.Status201Created)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithSummary("Get Category By Id")
+            .WithDescription("Get Category By Id");
     }
 }

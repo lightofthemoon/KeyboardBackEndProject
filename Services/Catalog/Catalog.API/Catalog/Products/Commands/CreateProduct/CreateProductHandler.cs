@@ -1,9 +1,8 @@
-﻿
-using Catalog.API.Data;
+﻿using Catalog.API.Data;
 using Catalog.API.DTOs;
 using Catalog.API.Models;
 
-namespace Catalog.API.Catalog.Products.CreateProduct;
+namespace Catalog.API.Catalog.Products.Commands.CreateProduct;
 
 public record CreateProductCommand(CreateProductDTO CreateProductDto) : ICommand<CreateProductResult>;
 

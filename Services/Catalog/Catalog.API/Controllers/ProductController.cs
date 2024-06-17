@@ -40,11 +40,18 @@ namespace Catalog.API.Controllers
             }
             return Ok(product);
         }
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetByName(
+            [FromQuery(Name = "Name")] string Name)
+        {
+            var products = await _productContext.Products.Where(x => x.ProductName.Contains(Name)).ToListAsync();
+
+            return Ok(products);
+        }
 
         [HttpPost]  
         public async Task<ActionResult<Product>> CreateProduct(CreateProductDTO createProductDTO)
         {
-
             var product = new Product(
                 createProductDTO.ProductName,
                 createProductDTO.Quantity,
