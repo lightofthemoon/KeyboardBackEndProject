@@ -1,4 +1,5 @@
 ﻿using Carter;
+using Catalog.API.Catalog.Products.Queries.GetProductsByName;
 using Catalog.API.Models;
 using Mapster;
 using MediatR;
@@ -22,6 +23,11 @@ public class GetProductsEndpoint : ICarterModule
                 //var response = result.Adapt<GetProductsResponse>();
 
                 return new GetProductsResponse(result.Products);
-            });
+            })
+            .WithName("GetProducts")
+            .Produces<GetProductsResponse>(StatusCodes.Status201Created)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithSummary("Get Products")
+            .WithDescription("Get Products"); 
     }
 }

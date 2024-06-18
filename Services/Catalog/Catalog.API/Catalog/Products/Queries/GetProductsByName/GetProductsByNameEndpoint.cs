@@ -1,4 +1,5 @@
 ﻿using Carter;
+using Catalog.API.Catalog.Products.Commands.CreateProduct;
 using Catalog.API.Models;
 using MediatR;
 
@@ -18,6 +19,11 @@ public class GetProductsByNameEndpoint : ICarterModule
             var result = await sender.Send(new GetProductsByNameQuery(request.Name));
 
             return new GetProductsByNameResponse(result.Products);
-        });
+        })
+        .WithName("GetProductsByName")
+        .Produces<GetProductsByNameResponse>(StatusCodes.Status201Created)
+        .ProducesProblem(StatusCodes.Status400BadRequest)
+        .WithSummary("Get Products By Name")
+        .WithDescription("Get Products By Name");
     }
 }

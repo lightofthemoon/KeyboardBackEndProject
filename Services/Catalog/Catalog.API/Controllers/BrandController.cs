@@ -26,6 +26,14 @@ namespace Catalog.API.Controllers
             return Ok(brands);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Brand>> GetById(Guid Id)
+        {
+            var brand = await _context.Brand.FindAsync(Id);
+
+            return Ok(brand);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Brand>> CreateBrand([FromBody] CreateBrandDTO createBrandDto)
         {

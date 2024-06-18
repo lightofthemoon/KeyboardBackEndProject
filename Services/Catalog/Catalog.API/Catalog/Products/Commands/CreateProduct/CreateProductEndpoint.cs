@@ -1,4 +1,5 @@
 ﻿using Carter;
+using Catalog.API.Catalog.Products.Queries.GetProductsByName;
 using Catalog.API.DTOs;
 using Catalog.API.Models;
 using Mapster;
@@ -25,6 +26,11 @@ public class CreateProductEndpoint : ICarterModule
                 var response = result.Adapt<CreateProductResponse>();
 
                 return Results.Ok(response.Product);
-            });
+            })
+            .WithName("CreateProduct")
+            .Produces<CreateProductResponse>(StatusCodes.Status201Created)
+            .ProducesProblem(StatusCodes.Status400BadRequest)
+            .WithSummary("Create Product")
+            .WithDescription("Create Product");
     }
 }

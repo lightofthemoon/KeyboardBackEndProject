@@ -48,8 +48,25 @@ namespace Catalog.API.Controllers
 
             return Ok(products);
         }
+        [HttpGet("category")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetByCategory(
+            [FromQuery(Name = "category")] Guid Category)
+        {
+            var products = await _productContext.Products.Where(x => x.CategoryId == Category).ToListAsync();
 
-        [HttpPost]  
+            return Ok(products);
+        }
+
+        [HttpGet("brand")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetByBrand(
+            [FromQuery(Name = "brand")] Guid Brand)
+        {
+            var products = await _productContext.Products.Where(x => x.BrandId == Brand).ToListAsync();
+
+            return Ok(products);
+        }
+
+        [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(CreateProductDTO createProductDTO)
         {
             var product = new Product(
@@ -68,6 +85,30 @@ namespace Catalog.API.Controllers
             await _productContext.SaveChangesAsync();
 
             return Ok(product); 
+        }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<bool>> UpdateProduct(Guid Id, UpdateProductDTO updateProductDTO)
+        {
+            var product = await _productContext.Products.FirstOrDefaultAsync(x => x.ProductId == Id);
+            if(product == null)
+            {
+                // return NotFound();
+            }
+            product.ProductName = updateProductDTO.ProductName;
+            product.Quantity = updateProductDTO.Quantity;
+            product.Price = updateProductDTO.Price;
+            product.Unit = updateProductDTO.Unit;
+            product.Description = updateProductDTO.Description;
+            product.DisplayUrl = updateProductDTO.DisplayUrl;
+            product.CategoryId = updateProductDTO.CategoryId;
+            product.BrandId = updateProductDTO.BrandId;
+
+            _productContext.Products.Update(product);
+
+            var result = await _productContext.SaveChangesAsync() > 0;
+            if(result) return Ok(true);
+
+            return BadRequest("Problem saving changes");
         }
     }
 }
