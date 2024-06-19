@@ -23,5 +23,9 @@
             CategoryId = categoryId;
             BrandId = brandId;
         }
+        public Product(Guid Id, string productName) {
+            this.ProductId = Id;
+            this.ProductName = productName;
+        }
     }
 }

@@ -12,14 +12,10 @@ namespace Catalog.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ProductContext _productContext;
-        private readonly CategoryContext _categoryContext;
-        private readonly BrandContext _brandContext;
 
-        public ProductController(ProductContext productContext, CategoryContext categoryContext, BrandContext brandContext)
+        public ProductController(ProductContext productContext)
         {
             _productContext = productContext;
-            _categoryContext = categoryContext;
-            _brandContext = brandContext;
         }
 
         [HttpGet]
