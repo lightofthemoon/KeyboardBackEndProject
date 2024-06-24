@@ -20,8 +20,8 @@ public class CreateBrandValidator : AbstractValidator<CreateBrandCommand>
 
 public class CreateBrandHandler : ICommandHandler<CreateBrandCommand, CreateBrandResult>
 {
-    private readonly BrandContext _context;
-    public CreateBrandHandler(BrandContext context)
+    private readonly CatalogContext _context;
+    public CreateBrandHandler(CatalogContext context)
     {
         _context = context;
     }

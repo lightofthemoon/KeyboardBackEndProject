@@ -10,8 +10,8 @@ public record GetBrandByIdResult(Brand Brand);
 
 public class GetBrandByIdHandler : IQueryHandler<GetBrandByIdQuery, GetBrandByIdResult>
 {
-    private BrandContext _context;
-    public GetBrandByIdHandler(BrandContext context)
+    private CatalogContext _context;
+    public GetBrandByIdHandler(CatalogContext context)
     {
         _context = context;
     }

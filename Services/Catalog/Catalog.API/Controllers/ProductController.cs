@@ -11,9 +11,9 @@ namespace Catalog.API.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ProductContext _productContext;
+        private readonly CatalogContext _productContext;
 
-        public ProductController(ProductContext productContext)
+        public ProductController(CatalogContext productContext)
         {
             _productContext = productContext;
         }
@@ -82,29 +82,29 @@ namespace Catalog.API.Controllers
 
             return Ok(product); 
         }
-        [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> UpdateProduct(Guid Id, UpdateProductDTO updateProductDTO)
-        {
-            var product = await _productContext.Products.FirstOrDefaultAsync(x => x.ProductId == Id);
-            if(product == null)
-            {
-                // return NotFound();
-            }
-            product.ProductName = updateProductDTO.ProductName;
-            product.Quantity = updateProductDTO.Quantity;
-            product.Price = updateProductDTO.Price;
-            product.Unit = updateProductDTO.Unit;
-            product.Description = updateProductDTO.Description;
-            product.DisplayUrl = updateProductDTO.DisplayUrl;
-            product.CategoryId = updateProductDTO.CategoryId;
-            product.BrandId = updateProductDTO.BrandId;
+        //[HttpPut("{id}")]
+        //public async Task<ActionResult<bool>> UpdateProduct(Guid Id, UpdateProductDTO updateProductDTO)
+        //{
+        //    var product = await _productContext.Products.FirstOrDefaultAsync(x => x.ProductId == Id);
+        //    if(product == null)
+        //    {
+        //        // return NotFound();
+        //    }
+        //    product.ProductName = updateProductDTO.ProductName;
+        //    product.Quantity = updateProductDTO.Quantity;
+        //    product.Price = updateProductDTO.Price;
+        //    product.Unit = updateProductDTO.Unit;
+        //    product.Description = updateProductDTO.Description;
+        //    product.DisplayUrl = updateProductDTO.DisplayUrl;
+        //    product.CategoryId = updateProductDTO.CategoryId;
+        //    product.BrandId = updateProductDTO.BrandId;
 
-            _productContext.Products.Update(product);
+        //    _productContext.Products.Update(product);
 
-            var result = await _productContext.SaveChangesAsync() > 0;
-            if(result) return Ok(true);
+        //    var result = await _productContext.SaveChangesAsync() > 0;
+        //    if(result) return Ok(true);
 
-            return BadRequest("Problem saving changes");
-        }
+        //    return BadRequest("Problem saving changes");
+        //}
     }
 }

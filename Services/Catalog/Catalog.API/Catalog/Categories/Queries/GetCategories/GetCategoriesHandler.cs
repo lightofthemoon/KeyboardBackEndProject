@@ -15,8 +15,8 @@ public record GetCategoriesResult(IEnumerable<Category> Categories);
 
 public class GetCategoriesHandler : IQueryHandler<GetCategoriesQuery, GetCategoriesResult>
 {
-    private readonly CategoryContext _context;
-    public GetCategoriesHandler(CategoryContext context)
+    private readonly CatalogContext _context;
+    public GetCategoriesHandler(CatalogContext context)
     {
         _context = context;
     }

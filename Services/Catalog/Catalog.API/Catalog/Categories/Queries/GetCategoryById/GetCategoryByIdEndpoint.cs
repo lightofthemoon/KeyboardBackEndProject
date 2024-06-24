@@ -16,7 +16,7 @@ public class GetCategoryByIdEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet("/api/v1/cqrs/category/{id}",
-            async (Guid id, ISender sender) =>
+            async ([AsParameters] Guid id, ISender sender) =>
             {
                 var result = await sender.Send(new GetCategoryByIdQuery(id));
 

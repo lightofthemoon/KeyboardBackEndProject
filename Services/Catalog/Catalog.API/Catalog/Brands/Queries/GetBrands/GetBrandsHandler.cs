@@ -12,8 +12,8 @@ public record GetBrandsResult(List<Brand> Brands);
 
 public class GetBrandsHandler : IQueryHandler<GetBrandsQuery, GetBrandsResult>
 {
-    private BrandContext _context;
-    public GetBrandsHandler(BrandContext context)
+    private CatalogContext _context;
+    public GetBrandsHandler(CatalogContext context)
     {
         _context = context;
     }

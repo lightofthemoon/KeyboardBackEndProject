@@ -18,8 +18,8 @@ public class CreateCategoryValidator : AbstractValidator<CreateCategoryCommand>
 }
 public class CreateCategoryHandler : ICommandHandler<CreateCategoryCommand, CreateCatetoryResult>
 {
-    private CategoryContext _context;
-    public CreateCategoryHandler(CategoryContext context)
+    private CatalogContext _context;
+    public CreateCategoryHandler(CatalogContext context)
     {
         _context = context;
     }

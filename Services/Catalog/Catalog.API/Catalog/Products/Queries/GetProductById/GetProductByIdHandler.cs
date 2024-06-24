@@ -10,8 +10,8 @@ public record GetProductByIdResult(Product Product);
 
 public class GetProductByIdHandler : IQueryHandler<GetProductByIdQuery, GetProductByIdResult>
 {
-    private readonly ProductContext _context;
-    public GetProductByIdHandler(ProductContext context)
+    private readonly CatalogContext _context;
+    public GetProductByIdHandler(CatalogContext context)
     {
         _context = context;
     }

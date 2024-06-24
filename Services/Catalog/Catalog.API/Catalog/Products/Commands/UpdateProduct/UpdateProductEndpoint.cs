@@ -10,8 +10,8 @@ namespace Catalog.API.Catalog.Products.Commands.UpdateProduct
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/api/v1/cqrs/product", 
-                async ([AsParameters]UpdateProductRequest request, ISender sender) =>
+            app.MapPut("/api/v1/cqrs/product/{id}", 
+                async (UpdateProductRequest request, ISender sender) =>
             {
                 var result = sender.Send(new UpdateProductCommand(request.Id, request.UpdateProductDTO));
 

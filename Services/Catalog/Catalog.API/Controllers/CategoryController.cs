@@ -13,9 +13,9 @@ namespace Catalog.API.Controllers
     [Route("/api/v1/category")]
     public class CategoryController : ControllerBase
     {
-        private readonly CategoryContext _context;
+        private readonly CatalogContext _context;
 
-        public CategoryController(CategoryContext context)
+        public CategoryController(CatalogContext context)
         {
             _context = context;
         }

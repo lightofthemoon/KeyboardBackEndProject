@@ -11,9 +11,9 @@ namespace Catalog.API.Controllers
     [ApiController]
     public class BrandController : ControllerBase
     {
-        private readonly BrandContext _context;
+        private readonly CatalogContext _context;
 
-        public BrandController(BrandContext context)
+        public BrandController(CatalogContext context)
         {
             _context = context;
         }

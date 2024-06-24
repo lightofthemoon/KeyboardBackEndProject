@@ -10,8 +10,8 @@ public record GetCategoryByIdResult(Category Category);
 
 public class GetCategoryByIdHandler : IQueryHandler<GetCategoryByIdQuery, GetCategoryByIdResult>
 {
-    private readonly CategoryContext _context;
-    public GetCategoryByIdHandler(CategoryContext context)
+    private readonly CatalogContext _context;
+    public GetCategoryByIdHandler(CatalogContext context)
     {
         _context = context;
     }

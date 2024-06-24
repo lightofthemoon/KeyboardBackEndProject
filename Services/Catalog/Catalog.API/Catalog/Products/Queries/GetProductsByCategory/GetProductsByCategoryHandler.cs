@@ -12,8 +12,8 @@ public record GetProductsByCategoryResult(IEnumerable<Product> Products);
 
 public class GetProductsByCategoryHandler : IQueryHandler<GetProductsByCategoryQuery, GetProductsByCategoryResult>
 {
-    private readonly ProductContext _context;
-    public GetProductsByCategoryHandler(ProductContext context)
+    private readonly CatalogContext _context;
+    public GetProductsByCategoryHandler(CatalogContext context)
     {
         _context = context;    
     }

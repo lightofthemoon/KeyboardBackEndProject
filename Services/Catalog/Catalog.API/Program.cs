@@ -13,19 +13,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 builder.Services.AddCarter();
 
-builder.Services.AddDbContext<CategoryContext>(option =>
+builder.Services.AddDbContext<CatalogContext>(option =>
 {
     option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddDbContext<BrandContext>(option =>
-{
-    option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-}, ServiceLifetime.Scoped);
-builder.Services.AddDbContext<ProductContext>(option =>
-{
-    option.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-}, ServiceLifetime.Singleton
-    );
 
 var app = builder.Build();
 

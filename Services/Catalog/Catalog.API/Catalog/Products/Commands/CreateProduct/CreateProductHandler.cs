@@ -10,8 +10,8 @@ public record CreateProductResult(Product Product);
 public class CreateProductHandler : ICommandHandler<CreateProductCommand, CreateProductResult>
 
 {
-    private readonly ProductContext _context;
-    public CreateProductHandler(ProductContext context)
+    private readonly CatalogContext _context;
+    public CreateProductHandler(CatalogContext context)
     {
         _context = context;
     }
