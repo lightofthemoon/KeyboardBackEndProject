@@ -17,7 +17,7 @@ public class GetCategoryByIdHandler : IQueryHandler<GetCategoryByIdQuery, GetCat
     }
     public async Task<GetCategoryByIdResult> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
-        var category = await _context.Category.FindAsync(request.Id);
+        var category = await _context.Categories.FindAsync(request.Id);
 
         return new GetCategoryByIdResult(category);
     }

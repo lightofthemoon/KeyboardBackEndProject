@@ -17,7 +17,12 @@ public class GetBrandByIdHandler : IQueryHandler<GetBrandByIdQuery, GetBrandById
     }
     public async Task<GetBrandByIdResult> Handle(GetBrandByIdQuery request, CancellationToken cancellationToken)
     {
-        var brand = await _context.Brand.FindAsync(request.Id);
+        var brand = await _context.Brands.FindAsync(request.Id);
+
+        if(brand == null)
+        {
+            
+        }
 
         return new GetBrandByIdResult(brand);
     }

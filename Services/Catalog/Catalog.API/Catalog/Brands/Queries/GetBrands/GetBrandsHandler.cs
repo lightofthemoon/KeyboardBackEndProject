@@ -19,7 +19,7 @@ public class GetBrandsHandler : IQueryHandler<GetBrandsQuery, GetBrandsResult>
     }
     public async Task<GetBrandsResult> Handle(GetBrandsQuery request, CancellationToken cancellationToken)
     {
-        var brands = await _context.Brand.ToListAsync();
+        var brands = await _context.Brands.ToListAsync();
 
         return new GetBrandsResult(brands);
     }

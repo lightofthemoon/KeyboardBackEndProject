@@ -8,7 +8,7 @@ using MediatR;
 namespace Catalog.API.Catalog.Products.Commands.CreateProduct;
 
 
-public record CreateProductRequest(CreateBrandDTO CreateProductDto);
+public record CreateProductRequest(CreateProductDTO CreateProductDto);
 
 public record CreateProductResponse(Product Product);
 

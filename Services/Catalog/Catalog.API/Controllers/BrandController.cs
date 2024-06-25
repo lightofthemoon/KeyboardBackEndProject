@@ -21,7 +21,7 @@ namespace Catalog.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Brand>>> GetAllBrand()
         {
-            var brands = await _context.Brand.ToListAsync();
+            var brands = await _context.Brands.ToListAsync();
 
             return Ok(brands);
         }
@@ -29,7 +29,7 @@ namespace Catalog.API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Brand>> GetById(Guid Id)
         {
-            var brand = await _context.Brand.FindAsync(Id);
+            var brand = await _context.Brands.FindAsync(Id);
 
             return Ok(brand);
         }
@@ -41,7 +41,7 @@ namespace Catalog.API.Controllers
             brand.PhoneNumber = createBrandDto.PhoneNumber;
             brand.Email = createBrandDto.Email;
 
-            await _context.Brand.AddAsync(brand);
+            await _context.Brands.AddAsync(brand);
             await _context.SaveChangesAsync();
 
             return Ok(brand);

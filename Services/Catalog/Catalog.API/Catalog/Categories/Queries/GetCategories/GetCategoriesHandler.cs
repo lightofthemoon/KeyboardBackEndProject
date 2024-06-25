@@ -23,7 +23,7 @@ public class GetCategoriesHandler : IQueryHandler<GetCategoriesQuery, GetCategor
 
     public async Task<GetCategoriesResult> Handle(GetCategoriesQuery query, CancellationToken cancellationToken)
     {
-        var categories = await _context.Category.ToListAsync();
+        var categories = await _context.Categories.ToListAsync();
 
         return new GetCategoriesResult(categories);
     }

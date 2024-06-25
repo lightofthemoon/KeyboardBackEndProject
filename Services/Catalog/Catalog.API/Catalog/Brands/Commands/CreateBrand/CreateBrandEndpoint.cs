@@ -1,11 +1,12 @@
 ﻿using Carter;
+using Catalog.API.DTOs;
 using Catalog.API.Models;
 using Mapster;
 using MediatR;
 
 namespace Catalog.API.Catalog.Brands.Commands.CreateBrand;
 
-public record CreateBrandRequest(string BrandName);
+public record CreateBrandRequest(CreateBrandDTO CreateBrandDTO);
 
 public record CreateBrandResponse(Brand Brand);
 

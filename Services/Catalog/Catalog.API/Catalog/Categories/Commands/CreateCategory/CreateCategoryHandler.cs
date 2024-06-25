@@ -27,7 +27,7 @@ public class CreateCategoryHandler : ICommandHandler<CreateCategoryCommand, Crea
     {
         var category = new Category(Guid.NewGuid(), request.CategoryName);
 
-        await _context.Category.AddAsync(category);
+        await _context.Categories.AddAsync(category);
 
         await _context.SaveChangesAsync();
 

@@ -22,7 +22,7 @@ namespace Catalog.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Category>>> GetAllCategories()
         {
-            var categories = await _context.Category.ToListAsync();
+            var categories = await _context.Categories.ToListAsync();
 
             return Ok(categories);
         }
@@ -30,7 +30,7 @@ namespace Catalog.API.Controllers
         [HttpGet("{Id}")]
         public async Task<ActionResult<Category>> GetById(Guid Id)
         {
-            var category = await _context.Category.FindAsync(Id);
+            var category = await _context.Categories.FindAsync(Id);
 
             return Ok(category);
         }
@@ -42,7 +42,7 @@ namespace Catalog.API.Controllers
 
             category.CategoryId = Guid.NewGuid();
 
-            await _context.Category.AddAsync(category);
+            await _context.Categories.AddAsync(category);
 
             //var newCategory = _mapper.Map<Category>(category);
 

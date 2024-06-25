@@ -1,5 +1,7 @@
 ﻿using BuildingBlocks.CQRS;
+using BuildingBlocks.Exceptions;
 using Catalog.API.Data;
+using Catalog.API.Exceptions;
 using Catalog.API.Models;
 
 namespace Catalog.API.Catalog.Products.Queries.GetProductById;
@@ -21,7 +23,7 @@ public class GetProductByIdHandler : IQueryHandler<GetProductByIdQuery, GetProdu
 
         if (product == null)
         {
-            //throw NotFoundException();
+            throw new ProductNotFoundException(request.Id);
         }
         return new GetProductByIdResult(product);
     }

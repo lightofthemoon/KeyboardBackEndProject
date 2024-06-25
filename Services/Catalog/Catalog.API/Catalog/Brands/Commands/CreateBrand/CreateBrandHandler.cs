@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Catalog.API.Catalog.Brands.Commands.CreateBrand;
 
-public record CreateBrandCommand(CreateBrandDTO BrandDto) : ICommand<CreateBrandResult>;
+public record CreateBrandCommand(CreateBrandDTO CreateBrandDTO) : ICommand<CreateBrandResult>;
 
 public record CreateBrandResult(Brand Brand);
 
@@ -14,7 +14,7 @@ public class CreateBrandValidator : AbstractValidator<CreateBrandCommand>
 {
     public CreateBrandValidator()
     {
-        RuleFor(x => x.BrandDto.BrandName).NotEmpty().WithMessage("BrandName is required");
+        RuleFor(x => x.CreateBrandDTO.BrandName).NotEmpty().WithMessage("BrandName is required");
     }
 }
 
@@ -27,12 +27,12 @@ public class CreateBrandHandler : ICommandHandler<CreateBrandCommand, CreateBran
     }
     public async Task<CreateBrandResult> Handle(CreateBrandCommand request, CancellationToken cancellationToken)
     {
-        var brand = new Brand(Guid.NewGuid(), request.BrandDto.BrandName);
+        var brand = new Brand(Guid.NewGuid(), request.CreateBrandDTO.BrandName);
 
-        brand.PhoneNumber = request.BrandDto.PhoneNumber;
-        brand.Email = request.BrandDto.Email;
+        brand.PhoneNumber = request.CreateBrandDTO.PhoneNumber;
+        brand.Email = request.CreateBrandDTO.Email;
 
-        await _context.Brand.AddAsync(brand);
+        await _context.Brands.AddAsync(brand);
 
         await _context.SaveChangesAsync();
 
