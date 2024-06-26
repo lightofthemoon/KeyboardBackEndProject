@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "64d03984-95db-4767-bd31-8cef72dbbebf",
+		"name": "Products",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33979073"
+	},
+	"item": [
+		{
+			"name": "Create Product - CQRS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CreateProductDto\": {\r\n        \"ProductName\": \"Product - 2 - CQRS\",\r\n        \"Quantity\": 12,\r\n        \"Price\": 13000,\r\n        \"Unit\": \"Unit - 2 - CQRS\",\r\n        \"Description\": \"Desciption - 2 - CQRS\",\r\n        \"DisplayUrl\": \"DisplayUrl - 2 - CQRS\",\r\n        \"CategoryId\": \"41fe3f20-eb70-4921-b82d-dcda7e2976b6\",\r\n        \"BrandId\": \"cfcad084-f0ab-49d4-ae0b-d2a545c98553\"\r\n    }\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/cqrs/product"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ProductName\": \"Product - 2 - CQRS\",\r\n    \"Quantity\": 12,\r\n    \"Price\": 13000,\r\n    \"Unit\": \"Unit - 2 - CQRS\",\r\n    \"Description\": \"Desciption - 2 - CQRS\",\r\n    \"DisplayUrl\": \"DisplayUrl - 2 - CQRS\",\r\n    \"CategoryId\": \"e0c47a7f-4b75-4d76-b3e2-1088f39b9333\",\r\n    \"BrandId\": \"cfcad084-f0ab-49d4-ae0b-d2a545c98553\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/product"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products - CQRS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/cqrs/product"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/product"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product By Id - CQRS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/cqrs/product/10af3201-61ed-4820-a1cd-2501b6994786"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/product/10af3201-61ed-4820-a1cd-2501b6994786"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products By Category - CQRS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/cqrs/product/category/e0c47a7f-4b75-4d76-b3e2-1088f39b9333"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products By Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/product/category?category=e0c47a7f-4b75-4d76-b3e2-1088f39b9333",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"product",
+						"category"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "e0c47a7f-4b75-4d76-b3e2-1088f39b9333"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products By Name - CQRS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/cqrs/product/name/CQRS"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/product/search?Name=1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"product",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Name",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product - CQRS",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UpdateProductDTO\": {\r\n        \"Id\": \"10af3201-61ed-4820-a1cd-2501b6994786\",\r\n        \"ProductName\": \"Product - 2 - CQRS - Update\",\r\n        \"Quantity\": 12,\r\n        \"Price\": 13000,\r\n        \"Unit\": \"Unit - 1 - CQRS - Update\",\r\n        \"Description\": \"Desciption - 1 - CQRS\",\r\n        \"DisplayUrl\": \"DisplayUrl - 1 - CQRS\",\r\n        \"CategoryId\": \"41fe3f20-eb70-4921-b82d-dcda7e2976b6\",\r\n        \"BrandId\": \"cfcad084-f0ab-49d4-ae0b-d2a545c98553\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/cqrs/product/10af3201-61ed-4820-a1cd-2501b6994786"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UpdateProductDTO\": {\r\n        \"Id\": \"10af3201-61ed-4820-a1cd-2501b6994786\",\r\n        \"ProductName\": \"Product - 2 - CQRS - Update\",\r\n        \"Quantity\": 12,\r\n        \"Price\": 13000,\r\n        \"Unit\": \"Unit - 1 - CQRS - Update\",\r\n        \"Description\": \"Desciption - 1 - CQRS\",\r\n        \"DisplayUrl\": \"DisplayUrl - 1 - CQRS\",\r\n        \"CategoryId\": \"41fe3f20-eb70-4921-b82d-dcda7e2976b6\",\r\n        \"BrandId\": \"cfcad084-f0ab-49d4-ae0b-d2a545c98553\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/product"
+			},
+			"response": []
+		},
+		{
+			"name": "Get By Brand",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/product/brand?brand=cfcad084-f0ab-49d4-ae0b-d2a545c98553",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"product",
+						"brand"
+					],
+					"query": [
+						{
+							"key": "brand",
+							"value": "cfcad084-f0ab-49d4-ae0b-d2a545c98553"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

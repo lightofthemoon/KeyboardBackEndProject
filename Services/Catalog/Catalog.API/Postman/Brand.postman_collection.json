@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "ad38a9ea-78c0-4cea-b845-288297bdedf6",
+		"name": "Brand",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33979073"
+	},
+	"item": [
+		{
+			"name": "Create Brand - CQRS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CreateBrandDTO\": {\r\n        \"BrandName\": \"Keydous - 1\",\r\n        \"PhoneNumber\": \"0123456789\",\r\n        \"Email\": \"abcxyz@gmail.com\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/cqrs/brand"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Brand",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"BrandName\": \"Keydous - 2\",\r\n    \"PhoneNumber\": \"0123456789\",\r\n    \"Email\": \"abcxyz@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/brand"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Brand By Id - CQRS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/cqrs/brand/f725de4c-bcaa-4d2e-9c07-5b4f09e4681a"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Brands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/brand"
+			},
+			"response": []
+		}
+	]
+}

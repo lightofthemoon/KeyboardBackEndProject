@@ -1,0 +1,28 @@
+{
+	"info": {
+		"_postman_id": "83320740-4952-4233-b53d-7897373432b4",
+		"name": "ProductDetail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33979073"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CreateProductDetailDTO\": {\r\n        \"ProductId\": \"10af3201-61ed-4820-a1cd-2501b6994786\",\r\n        \"Color\": \"Blue\",\r\n        \"Price\": 12,\r\n        \"Quantity\": 10,\r\n        \"ImageUrl\": \"ImageURL Product - 1\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/cqrs/product/detail"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "2313d91d-36c6-4008-aadb-6a2b1b787f20",
+		"name": "Category",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33979073"
+	},
+	"item": [
+		{
+			"name": "Create Category - CQRS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CategoryName\": \"Switch\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/cqrs/category",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"cqrs",
+						"category"
+					],
+					"query": [
+						{
+							"key": "CategoryName",
+							"value": "Keyboard",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CategoryName\": \"Keyboard - 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/category"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Categories - CQRS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/cqrs/category"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/category"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Catetory By Id - CQRS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/cqrs/category/19e08e70-f588-448a-b168-950461d50a16"
+			},
+			"response": []
+		}
+	]
+}
