@@ -23,9 +23,9 @@ public class CreateProductEndpoint : ICarterModule
 
                 var result = await sender.Send(command);
 
-                var response = result.Adapt<CreateProductResponse>();
+                //var response = result.Adapt<CreateProductResponse>(); // Adapt fail
 
-                return Results.Ok(response.Product);
+                return Results.Ok(new CreateProductResponse(result.Product));
             })
             .WithName("CreateProduct")
             .Produces<CreateProductResponse>(StatusCodes.Status201Created)

@@ -19,6 +19,8 @@ public class GetCategoryByIdHandler : IQueryHandler<GetCategoryByIdQuery, GetCat
     {
         var category = await _context.Categories.FindAsync(request.Id);
 
+        if (category == null) return null;
+
         return new GetCategoryByIdResult(category);
     }
 }

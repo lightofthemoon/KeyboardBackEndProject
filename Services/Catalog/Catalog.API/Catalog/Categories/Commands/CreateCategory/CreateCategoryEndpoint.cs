@@ -22,7 +22,7 @@ public class CreateCategoryEndpoint : ICarterModule
 
                 var response = result.Adapt<CreateCategoryResponse>();
 
-                return Results.Created($"/category/{result}", result);
+                return Results.Ok(response.Category);
             })
             .WithName("CreateCategory")
             .Produces<CreateCategoryResponse>(StatusCodes.Status201Created)

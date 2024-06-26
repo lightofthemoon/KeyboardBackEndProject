@@ -23,7 +23,7 @@ public class GetProductByIdHandler : IQueryHandler<GetProductByIdQuery, GetProdu
 
         if (product == null)
         {
-            throw new ProductNotFoundException(request.Id);
+            return null;
         }
         return new GetProductByIdResult(product);
     }

@@ -21,7 +21,7 @@ public class GetBrandByIdHandler : IQueryHandler<GetBrandByIdQuery, GetBrandById
 
         if(brand == null)
         {
-            
+            return null;
         }
 
         return new GetBrandByIdResult(brand);

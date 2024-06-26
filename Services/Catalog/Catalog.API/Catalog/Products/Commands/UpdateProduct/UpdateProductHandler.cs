@@ -19,7 +19,7 @@ namespace Catalog.API.Catalog.Products.Commands.UpdateProduct
             {
                 //return NotFound();
             }
-            product.ProductName = request.UpdateProductDTO.ProductName;
+            product.ProductName = request.UpdateProductDTO.ProductName;  /// request.UpdateProductDTO null
             product.Quantity = request.UpdateProductDTO.Quantity;
             product.Price = request.UpdateProductDTO.Price;
             product.Unit = request.UpdateProductDTO.Unit;
@@ -28,7 +28,9 @@ namespace Catalog.API.Catalog.Products.Commands.UpdateProduct
             product.CategoryId = request.UpdateProductDTO.CategoryId;
             product.BrandId = request.UpdateProductDTO.BrandId;
 
+            _context.Products.Update(product);
             await _context.SaveChangesAsync();
+
             return new UpdateProductResult(true);
         }
     }

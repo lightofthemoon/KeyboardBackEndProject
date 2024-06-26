@@ -22,6 +22,11 @@ public class GetBrandByIdEndpoint : ICarterModule
 
                 var response = result.Adapt<GetBrandByIdResponse>();
 
+                if(response.Brand == null )
+                {
+                    return Results.NotFound("Brand Not Found");
+                }
+
                 return Results.Ok(response.Brand);
             });
     }

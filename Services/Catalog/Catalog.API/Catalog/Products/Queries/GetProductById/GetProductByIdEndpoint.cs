@@ -3,6 +3,9 @@ using Catalog.API.Catalog.Products.Queries.GetProductsByName;
 using Catalog.API.Models;
 using Mapster;
 using MediatR;
+using Microsoft.AspNetCore.Http.HttpResults;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Catalog.API.Catalog.Products.Queries.GetProductById;
 
@@ -19,8 +22,8 @@ public class GetProductByIdEndpoint : ICarterModule
             var result = await sender.Send(new GetProductByIdQuery(request.Id));
 
             //var response = result.Adapt<GetProductByIdResponse>();
-
-            return new GetProductByIdResponse(result.Product);
+            if (result == null) return Results.NotFound("ProductNotFound");
+            return Results.Ok(result.Product);
         })
         .WithName("GetProductById")
         .Produces<GetProductByIdResponse>(StatusCodes.Status201Created)

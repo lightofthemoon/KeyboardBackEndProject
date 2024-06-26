@@ -16,11 +16,13 @@ public class GetCategoryByIdEndpoint : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet("/api/v1/cqrs/category/{id}",
-            async ([AsParameters] Guid id, ISender sender) =>
+            async ([AsParameters] GetCategoryByIdRequest request, ISender sender) =>
             {
-                var result = await sender.Send(new GetCategoryByIdQuery(id));
+                var result = await sender.Send(new GetCategoryByIdQuery(request.Id));
 
                 //var response = result.Adapt<GetCategoryByIdResponse>();
+
+                if (result.Category == null) return Results.NotFound("Category not found");
 
                 return Results.Ok(result);
             })

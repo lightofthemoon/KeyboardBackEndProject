@@ -13,7 +13,7 @@ namespace Catalog.API.Catalog.Products.Commands.UpdateProduct
             app.MapPut("/api/v1/cqrs/product/{id}", 
                 async (UpdateProductRequest request, ISender sender) =>
             {
-                var result = sender.Send(new UpdateProductCommand(request.Id, request.UpdateProductDTO));
+                var result = sender.Send(new UpdateProductCommand(request.UpdateProductDTO.Id, request.UpdateProductDTO));
 
                 return new UpdateProductResponse(!result.IsFaulted);
             })
